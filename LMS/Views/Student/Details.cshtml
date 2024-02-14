@@ -1,0 +1,74 @@
+﻿@model LMS.Models.EnrolledCoursesViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CourseTitle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CourseTitle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CourseDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CourseDescription)
+        </dd>
+        <hr />
+        <dt class="col-sm-2">
+            Modules
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> Title </th>
+                        <th> Description </th>
+                        <th> Completion Status </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var module in Model.Progresses)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(moduleItem => module.Module.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(moduleItem => module.Module.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(moduleItem => module.Completion_Status)
+                            </td>
+                            @if(module.Completion_Status == "Not Completed")
+                            {
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@module.Module_Id"> Update Completion Status</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </dd>
+    </dl>
+
+
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

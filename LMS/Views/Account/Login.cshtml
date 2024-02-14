@@ -1,0 +1,44 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 50vh;">
+    <div class="row">
+        <div class="col">
+            <h1>Login</h1>
+            <form method="post">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="inputUsername" class="col-form-label">Username</label>
+                    </div>
+                    <div class="col-auto">
+                        <input asp-for="UserName" type="text" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">
+                        <span asp-validation-for="UserName"></span>
+                    </div>
+                    <div class="col-auto">
+                        <span id="usernameHelpInline" class="form-text">
+                            Must be 5-15 characters long.
+                        </span>
+                    </div>
+                </div>
+                <div class="row g-3 align-items-center" style="margin-top: 10px">
+                    <div class="col-auto">
+                        <label for="inputPassword" class="col-form-label">Password</label>
+                    </div>
+                    <div class="col-auto">
+                        <input asp-for="Password" type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline">
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <div class="col-auto">
+                        <span id="passwordHelpInline" class="form-text">
+                            Must be 3-10 characters long.
+                        </span>
+                    </div>
+                </div>
+                <input type="submit" value="LogIn" class="btn btn-outline-primary" />
+            </form>
+        </div>
+    </div>
+</div>
